@@ -1,14 +1,52 @@
 """Binary Tree Traversal"""
 
 
-# Pre-order traversal
+class Node:
+    def __init__(self, val=0, left=None, right=None):
+        self.data = val
+        self.left = left
+        self.right = right
+
+
 def pre_order(node):
-    return []
+    """Pre-order traversal"""
+    output = [node.data]
+    current_node = node
+    while current_node.left is not None:
+        output.append(current_node.left.data)
+        current_node = current_node.left
+    current_node = node
+    while current_node.right is not None:
+        output.append(current_node.right.data)
+        current_node = current_node.right
+    return output
 
-# In-order traversal
+
 def in_order(node):
-    return []
+    """In-order traversal"""
+    output = []
+    current_node = node
+    while current_node.left is not None:
+        output.append(current_node.left.data)
+        current_node = current_node.left
+    output.append(node.data)
+    current_node = node
+    while current_node.right is not None:
+        output.append(current_node.right.data)
+        current_node = current_node.right
+    return output
 
-# Post-order traversal
+
 def post_order(node):
-    return []
+    """Post-order traversal"""
+    output = []
+    current_node = node
+    while current_node.left is not None:
+        output.append(current_node.left.data)
+        current_node = current_node.left
+    current_node = node
+    while current_node.right is not None:
+        output.append(current_node.right.data)
+        current_node = current_node.right
+    output.append(node.data)
+    return output
