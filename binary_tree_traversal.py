@@ -21,23 +21,26 @@ def pre_order(node):
             stack.append(current_node.right)
         if current_node.left:
             stack.append(current_node.left)
-    
+
     return result
 
 
 def in_order(node):
     """In-order traversal"""
-    output = []
+    result = []
+    stack = []
     current_node = node
-    while current_node.left is not None:
-        output.append(current_node.left.data)
-        current_node = current_node.left
-    output.append(node.data)
-    current_node = node
-    while current_node.right is not None:
-        output.append(current_node.right.data)
+
+    while stack:
+        while current_node:
+            stack.append(current_node)
+            current_node = current_node.left
+
+        current_node = stack.pop()
+        result.append(current_node)
         current_node = current_node.right
-    return output
+
+    return result
 
 
 def post_order(node):
