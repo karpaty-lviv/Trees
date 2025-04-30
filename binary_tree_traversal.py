@@ -45,14 +45,4 @@ def in_order(node):
 
 def post_order(node):
     """Post-order traversal"""
-    output = []
-    current_node = node
-    while current_node.left is not None:
-        output.append(current_node.left.data)
-        current_node = current_node.left
-    current_node = node
-    while current_node.right is not None:
-        output.append(current_node.right.data)
-        current_node = current_node.right
-    output.append(node.data)
-    return output
+    ...
