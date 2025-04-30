@@ -10,6 +10,9 @@ class Node:
 
 def pre_order(node):
     """Pre-order traversal"""
+    if node is None:
+        return []
+
     result = []
     stack = [node]
 
@@ -27,17 +30,20 @@ def pre_order(node):
 
 def in_order(node):
     """In-order traversal"""
+    if node is None:
+        return []
+
     result = []
     stack = []
     current_node = node
 
-    while stack:
+    while stack or current_node:
         while current_node:
             stack.append(current_node)
             current_node = current_node.left
 
         current_node = stack.pop()
-        result.append(current_node)
+        result.append(current_node.data)
         current_node = current_node.right
 
     return result
@@ -45,4 +51,23 @@ def in_order(node):
 
 def post_order(node):
     """Post-order traversal"""
-    ...
+    if node is None:
+        return []
+
+    stack1 = [node]
+    stack2 = []
+    result = []
+
+    while stack1:
+        node = stack1.pop()
+        stack2.append(node)
+
+        if node.left:
+            stack1.append(node.left)
+        if node.right:
+            stack1.append(node.right)
+
+    while stack2:
+        result.append(stack2.pop().data)
+
+    return result
