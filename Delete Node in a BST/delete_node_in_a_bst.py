@@ -65,6 +65,3 @@ class Solution:
                 current_node = current_node.left
             current_node.left = temp_node.left
             return root
-
-root = TreeNode(5, TreeNode(3, TreeNode(2), TreeNode(4)), TreeNode(6, left=0, right = TreeNode(7)))
-# print(Solution.deleteNode(root, 3).val)
